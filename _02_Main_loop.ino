@@ -9,6 +9,7 @@ void loop()
 #endif
   plusButtonState = digitalRead(plusButtonPin);
   minusButtonState = digitalRead(minusButtonPin);
+  modeButtonState = digitalRead(modeButtonPin);
   
   if( plusButtonState == HIGH && minusButtonState == LOW){
     int IINSTtemp = myTeleInfo->getIINST();
@@ -46,6 +47,12 @@ void loop()
   }else{
     lcd.setCursor(15, 0);
     lcd.print(" ");
+  }
+
+  if(modeButtonState == HIGH){
+    boolean modeTemp = myTeleInfo->getHistoricalMode() ? false : true ;
+    myTeleInfo->setHistoricalMode(modeTemp);
+    delay(500);
   }
 
   //myTeleInfo->sendInfo();

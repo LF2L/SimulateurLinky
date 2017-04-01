@@ -8,7 +8,11 @@
 class TeleInfo
 {
 public:
+  TeleInfo(String version, boolean historicMode, int IntensiteSouscrite);
+  TeleInfo(String version, int IntensiteSouscrite);
+  TeleInfo(String version, boolean historicMode);
   TeleInfo(String version);
+  void sendInfo();
   boolean readTeleInfo();
   boolean recordTeleInfoOnMySQLServer();
   void displayTeleInfo();
@@ -17,6 +21,8 @@ public:
   void setIINST(int value);
   int getIINST();
   int getISOUSC();
+  int getPAPP();
+  void setPAPP(int value);
   
 private :
   SoftwareSerial* mySerial;
